@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { saveComment } from 'actions';
 
 // import { Container } from './styles';
 
 export default function CommentBox() {
+  const dispatch = useDispatch();
   const [comment, setComment] = useState('');
 
   function handleChange(e) {
@@ -13,6 +16,7 @@ export default function CommentBox() {
     e.preventDefault();
 
     // @TODO - dispatch create comment action
+    dispatch(saveComment(comment));
 
     setComment('');
   }
