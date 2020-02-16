@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { saveComment } from 'actions';
+
+import { saveComment, fetchComments } from 'actions';
 
 // import { Container } from './styles';
 
@@ -14,10 +15,7 @@ export default function CommentBox() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    // @TODO - dispatch create comment action
     dispatch(saveComment(comment));
-
     setComment('');
   }
 
@@ -32,6 +30,15 @@ export default function CommentBox() {
       ></textarea>
       <div>
         <button type="submit">Submit Comment</button>
+      </div>
+      <div>
+        <button
+          className="fetch-comments"
+          type="button"
+          onClick={() => dispatch(fetchComments())}
+        >
+          Fetch comments
+        </button>
       </div>
     </form>
   );
