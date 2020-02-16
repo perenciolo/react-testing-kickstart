@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { saveComment, fetchComments } from 'actions';
+import requireAuth from 'components/HOCS/requireAuth';
 
 // import { Container } from './styles';
 
-export default function CommentBox() {
+function CommentBox({ history }) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
 
@@ -43,3 +44,5 @@ export default function CommentBox() {
     </form>
   );
 }
+
+export default requireAuth(CommentBox);
